@@ -1,0 +1,48 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: aresta
+      POSTGRES_USER: aresta
+      POSTGRES_PASSWORD: aresta
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U aresta -d aresta"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    volumes:
+      - aresta_data:/var/lib/postgresql/data
+
+  api:
+    build:
+      context: ./services/api
+    environment:
+      APP_ENV: development
+      DATABASE_URL: postgresql+psycopg://aresta:aresta@db:5432/aresta
+      CORS_ORIGINS: http://localhost:4173
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test:
+        ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    ports:
+      - "8000:8000"
+
+  web:
+    build:
+      context: .
+      dockerfile: docker/web.Dockerfile
+    environment:
+      NEXT_PUBLIC_ARESTA_API_URL: http://localhost:8000
+    depends_on:
+      api:
+        condition: service_healthy
+    ports:
+      - "4173:4173"
+
+volumes:
+  aresta_data:

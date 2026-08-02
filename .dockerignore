@@ -1,0 +1,12 @@
+.git
+.sites-runtime
+.vinext
+.wrangler
+dist
+node_modules
+services/api/.pytest_cache
+services/api/.ruff_cache
+services/api/.venv
+services/api/**/__pycache__
+*.db
+.env*
