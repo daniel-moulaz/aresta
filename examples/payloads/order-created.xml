@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<order event="order.created">
+  <id>ord-1042</id>
+  <created_at>2026-08-02T19:42:00Z</created_at>
+  <customer>
+    <name>Marina Costa</name>
+    <email>marina@example.com</email>
+  </customer>
+  <total>189.90</total>
+</order>

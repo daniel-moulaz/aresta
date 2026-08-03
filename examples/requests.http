@@ -1,0 +1,23 @@
+@apiUrl = http://localhost:8000
+@workflowId = substitua_pelo_id_retornado
+
+### Health check
+GET {{apiUrl}}/health
+
+### Listar fluxos
+GET {{apiUrl}}/api/v1/workflows
+
+### Receber um webhook JSON
+POST {{apiUrl}}/api/v1/workflows/{{workflowId}}/events
+Content-Type: application/json
+X-Idempotency-Key: order-1042
+X-Correlation-ID: checkout-1042
+
+{
+  "order": { "id": "ord-1042" },
+  "customer": { "email": "marina@example.com" },
+  "total": 189.90
+}
+
+### Consultar eventos com falha
+GET {{apiUrl}}/api/v1/events?status=failed

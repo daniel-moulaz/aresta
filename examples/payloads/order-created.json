@@ -1,0 +1,12 @@
+{
+  "event": "order.created",
+  "order": {
+    "id": "ord-1042",
+    "created_at": "2026-08-02T19:42:00Z"
+  },
+  "customer": {
+    "name": "Marina Costa",
+    "email": "marina@example.com"
+  },
+  "total": 189.9
+}
