@@ -2,7 +2,7 @@
 
 Painel full stack para receber webhooks, transformar payloads e acompanhar falhas de integrações sem perder o contexto da execução.
 
-**[Abrir demonstração](https://relayops.danielzz7918.chatgpt.site)**
+**[Abrir demonstração](https://aresta.daniel-moulaz.workers.dev)**
 
 > A versão online usa dados de demonstração para continuar acessível sem infraestrutura externa. Ao rodar com Docker, o painel se conecta à API Python e persiste os eventos no PostgreSQL.
 
