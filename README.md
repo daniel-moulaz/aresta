@@ -4,7 +4,18 @@ Painel full stack para receber webhooks, transformar payloads e acompanhar falha
 
 **[Abrir demonstração](https://aresta.daniel-moulaz.workers.dev)**
 
+[![CI](https://github.com/daniel-moulaz/aresta/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/daniel-moulaz/aresta/actions/workflows/ci.yml)
+
 > A versão online usa dados de demonstração para continuar acessível sem infraestrutura externa. Ao rodar com Docker, o painel se conecta à API Python e persiste os eventos no PostgreSQL.
+
+## Conheça em poucos minutos
+
+1. Na demo, veja a **Visão geral** e filtre os eventos por **Falha** ou **Retry**.
+2. Abra uma execução para acompanhar payload, resposta, tentativas e `correlation_id`.
+3. Consulte **Fluxos**, **Incidentes** e **Destinos** para entender o contexto do evento.
+4. Para avaliar o processamento, rode a [API local](#rodando-o-projeto) e envie o mesmo [webhook de exemplo](#testando-um-webhook) duas vezes com a mesma chave.
+
+O painel online é uma demonstração de interface com dados fictícios. Os números exibidos não são métricas de uma operação real. Idempotência, assinatura e política de retry podem ser examinadas no [código e nos testes da API](services/api/tests), além do [ADR](docs/decisions/0001-idempotency-and-retries.md).
 
 ## Por que esse projeto existe
 
